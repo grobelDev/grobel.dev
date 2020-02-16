@@ -14,7 +14,8 @@ import {
 
 import Navbar from './Navbar';
 import HomePage from './HomePage';
-import Articles from './Articles';
+import ArticlesDirectory from './ArticlesDirectory';
+import ArticlePage from './ArticlePage';
 
 function App() {
   return (
@@ -24,9 +25,13 @@ function App() {
         <Route exact path='/'>
           <HomePage></HomePage>
         </Route>
-        <Route path='/articles'>
-          <Articles></Articles>
+        <Route exact path='/articles'>
+          <ArticlesDirectory></ArticlesDirectory>
         </Route>
+        <Route path='/articles/:name'>
+          <ArticlePage></ArticlePage>
+        </Route>
+        <Route path='/'>404 Error!</Route>
       </Switch>
     </Fragment>
   );

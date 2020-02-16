@@ -1,7 +1,3 @@
-# Personal Stack
-
-Mon Jan 27 01:09 PM: - Setup Beginning Project Point (React + Tailwind) - (Google Cloud Build + Google Cloud Run) - Continuous CI/CD
-
 This is my personal stack when starting a new project.  
 I value having a flexible starting point and getting everything up and running as fast as possible.
 

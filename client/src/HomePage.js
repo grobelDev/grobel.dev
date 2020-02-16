@@ -21,7 +21,7 @@ export default function HomePage() {
       <div>
         <div id='header'>
           <div className='pt-24 bg-gray-100 lg:pt-0'>
-            <div className='relative w-full px-6 pt-16 pb-40 mx-auto max-w-screen-xl md:pb-24'>
+            <div className='relative w-full max-w-screen-xl px-6 pt-16 pb-40 mx-auto md:pb-24'>
               <div className='-mx-6 xl:flex'>
                 <div className='max-w-2xl px-6 mx-auto text-left md:text-center xl:text-left md:max-w-3xl'>
                   <h1 className='text-3xl font-light leading-tight sm:text-4xl md:text-5xl xl:text-4xl'>
@@ -31,9 +31,8 @@ export default function HomePage() {
                     </span>
                   </h1>
                   <p className='mt-6 leading-relaxed text-gray-600 sm:text-lg md:text-xl xl:text-lg'>
-                    I am a recent graduate of the Fullstack Flex bootcamp at
-                    Thinkful. <br></br>I believe in maintainable code and in
-                    doing my part against spaghetti code. <br></br>
+                    I believe in maintainable code and in doing my part against
+                    spaghetti code. <br></br>
                     When I'm not coding, I'm often found Indoors or Near
                     Electricity.
                     <br></br>There is always more spaghetti.
@@ -58,7 +57,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className='w-full px-6 mx-auto max-w-screen-xl'>
+      <div className='w-full max-w-screen-xl px-6 mx-auto'>
         <div className='-mx-6 lg:flex'>
           <div
             id='sidebar'

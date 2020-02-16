@@ -1,5 +1,3 @@
-## Section 1: Front-End (React + Tailwind):
-
 ### Step 1: Setup the initial repository.
 
 Let's start by creating a directory to hold the project.

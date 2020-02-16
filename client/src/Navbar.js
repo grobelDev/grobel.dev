@@ -1,10 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import Logo from './logo.png';
+import {
+  // eslint-disable-next-line
+  BrowserRouter as Router,
+  // Switch,
+  // Route
+  Link
+  // useParams,
+  // useLocation,
+  // Redirect,
+  // useRouteMatch
+} from 'react-router-dom';
 
 export default function Navbar() {
   return (
     <div className='fixed inset-x-0 top-0 z-50 flex items-center min-w-0 bg-gray-100 border-b-2 border-gray-200 lg:border-b-0 lg:static'>
-      <div className='relative w-full px-6 mx-auto max-w-screen-xl'>
+      <div className='relative w-full max-w-screen-xl px-6 mx-auto'>
         <div className='flex flex-col justify-center h-16 lg:border-b-2 lg:border-gray-200'>
           <div className='flex items-center -mx-6'>
             <div className='pl-6 pr-6 lg:w-1/4 xl:w-1/5'>
@@ -12,7 +24,7 @@ export default function Navbar() {
                 <a href='/' className='flex items-center'>
                   <img
                     className='w-auto h-8 pr-3'
-                    src='https://i.imgur.com/4eo0x4e.png'
+                    src={Logo}
                     alt='actuharry logo'
                   ></img>
                   <LogoText className='text-2xl text-gray-800 font-regular md:block'>
@@ -22,7 +34,10 @@ export default function Navbar() {
               </div>
             </div>
             <div className='flex justify-end flex-grow'>
-              <div className='flex items-center justify-start px-6 text-gray-500'>
+              <div className='flex items-center justify-start px-6'>
+                <div>
+                  <Link to='/articles'>Articles</Link>
+                </div>
                 {/* <a
                 href='https://github.com/actuharry'
                 className='flex items-center block mr-5 text-gray-500 hover:text-gray-700'
