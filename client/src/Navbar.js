@@ -25,10 +25,10 @@ export default function Navbar() {
                   <img
                     className='w-auto h-8 pr-3'
                     src={Logo}
-                    alt='actuharry logo'
+                    alt='grobelDev logo'
                   ></img>
                   <LogoText className='text-2xl text-gray-800 font-regular md:block'>
-                    actuharry
+                    grobelDev
                   </LogoText>
                 </a>
               </div>

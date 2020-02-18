@@ -88,7 +88,7 @@ export default function HomePage() {
                     <img
                       className='w-auto h-6 pr-1'
                       src='https://i.imgur.com/2mdtBD3.png'
-                      alt='actuharryIcon'
+                      alt='grobelDevIcon'
                     ></img>
                     <p className='flex flex-col justify-center'>
                       Grobel - Chrome Extension
