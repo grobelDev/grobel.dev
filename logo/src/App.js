@@ -73,8 +73,8 @@ function Favicon() {
           <div className=''>Ubuntu medium 2</div>
         </div>
         <div className='p-6 m-2 bg-white border-2 border-green-300'>
-          <FaviconUbuntu className='text-5xl font-bold bg-blue-300 rounded-full'>
-            <div className='mb-2'>a</div>
+          <FaviconUbuntu className='text-5xl font-semibold bg-blue-300 rounded-full'>
+            <div className='mb-4'>g</div>
           </FaviconUbuntu>
           <div className=''>Ubuntu bold</div>
         </div>
@@ -133,7 +133,7 @@ function Logo512() {
       </div>
       <div className='p-6 bg-white border-2 border-green-300'>
         <FaviconUbuntuLogo512 className='text-5xl font-bold bg-blue-300 rounded-full'>
-          <div className='mb-10'>a</div>
+          <div className='mb-24'>g</div>
         </FaviconUbuntuLogo512>
         <div className=''>Ubuntu bold</div>
       </div>
