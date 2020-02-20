@@ -203,7 +203,7 @@ function Content({ children, grobelRef, firstRef, secondRef }) {
           description='A Chrome Extension that lets you send screenshots to Discord without a Bot.'
           githubUrl='https://github.com/grobelDev/grobel-v1-chrome-extension'
           projectUrl='https://chrome.google.com/webstore/detail/grobel-discord-webhook-co/eeobebgelloiljapehlibobeapgmoanl?hl=en'
-          imageUrl='https://cdn.discordapp.com/attachments/636565266356240394/679986878996676620/screenshot.png'
+          imageUrl='https://cdn.discordapp.com/attachments/636565266356240394/680047056428990464/screenshot.png'
           imageAlt='grobelExtensionImage'
         >
           <p>
