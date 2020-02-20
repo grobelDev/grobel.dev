@@ -40,8 +40,8 @@ export default function ArticlesDirectory() {
             let name = article.name;
 
             return (
-              <li key={`${article.title}`}>
-                <span className='py-2 text-blue-600'>
+              <li className='py-2' key={`${article.title}`}>
+                <span className='text-blue-600'>
                   <Link to={`/articles/${name}`}> {`${title}`}</Link>
                 </span>
               </li>
