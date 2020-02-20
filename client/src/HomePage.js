@@ -184,7 +184,7 @@ function Content({ children, grobelRef, firstRef, secondRef }) {
           myRef={secondRef}
           title='leagueofcomrades.com - Match History Between Friends'
           description='Find detailed breakdowns of player specific match histories in League of Legends.'
-          githubUrl='https://github.com/grobelDev/league-of-comrades'
+          githubUrl='https://github.com/grobelDev/leagueofcomrades.com'
           projectUrl='https://leagueofcomrades.com'
           imageUrl='https://cdn.discordapp.com/attachments/636565266356240394/680035312667459617/screenshot.png'
           imageAlt='League of Comrades Project Screenshot'
