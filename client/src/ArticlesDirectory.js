@@ -30,19 +30,24 @@ export default function ArticlesDirectory() {
   return (
     <div>
       <Layout>
-        <div className='py-4 text-3xl'>Articles</div>
-        {articles.map(article => {
-          let title = article.title;
-          let name = article.name;
+        {/* <div className='py-4 text-3xl'>Articles</div> */}
+        <PageTitle className='font-serif font-light leading-tight pb-4'>
+          Articles
+        </PageTitle>
+        <div className='text-xl'>
+          {articles.map(article => {
+            let title = article.title;
+            let name = article.name;
 
-          return (
-            <Fragment key={`${article.title}`}>
-              <div className='py-2 text-blue-700'>
-                <Link to={`/articles/${name}`}> {`${title}`}</Link>
-              </div>
-            </Fragment>
-          );
-        })}
+            return (
+              <li key={`${article.title}`}>
+                <span className='py-2 text-blue-600'>
+                  <Link to={`/articles/${name}`}> {`${title}`}</Link>
+                </span>
+              </li>
+            );
+          })}
+        </div>
       </Layout>
     </div>
   );
@@ -61,3 +66,8 @@ function Layout({ children }) {
     </div>
   );
 }
+
+const PageTitle = styled.div`
+  font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-size: 2.5rem;
+`;

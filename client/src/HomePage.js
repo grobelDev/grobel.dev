@@ -1,18 +1,34 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import {
+  // eslint-disable-next-line
+  BrowserRouter as Router,
+  // Switch,
+  // Route
+  Link
+  // useParams,
+  // useLocation,
+  // Redirect,
+  // useRouteMatch
+} from 'react-router-dom';
 
 const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
 const useMountEffect = fun => useEffect(fun, []);
 
 export default function HomePage() {
-  const myRef = useRef(null);
+  const grobelRef = useRef(null);
+  const firstRef = useRef(null);
+  const secondRef = useRef(null);
+
   const isInitialMount = useRef(true);
 
   useMountEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
     } else {
-      scrollToRef(myRef);
+      scrollToRef(grobelRef);
+      scrollToRef(firstRef);
+      scrollToRef(secondRef);
     }
   });
 
@@ -42,13 +58,13 @@ export default function HomePage() {
               spaghetti code.
             </p> */}
                   <div
-                    onClick={() => scrollToRef(myRef)}
+                    onClick={() => scrollToRef(firstRef)}
                     className='flex justify-start mt-6 md:justify-center xl:justify-start'
                   >
                     <button className='px-4 py-3 font-semibold leading-tight text-white bg-blue-500 rounded-lg shadow-md md:px-5 xl:px-4 md:py-4 xl:py-3 hover:bg-blue-600 md:text-lg xl:text-base'>
                       See Projects
                     </button>
-                    {/* onClick={()=>scrollToRef(myRef) */}
+                    {/* onClick={()=>scrollToRef(grobelRef) */}
                   </div>
                 </div>
               </div>
@@ -82,7 +98,38 @@ export default function HomePage() {
                   <AnimatedA
                     // eslint-disable-next-line no-script-url
                     href='javascript:void(0);'
-                    onClick={() => scrollToRef(myRef)}
+                    onClick={() => scrollToRef(firstRef)}
+                    className='relative flex block px-2 py-1 -mx-2 font-medium text-gray-600 transition-fast hover:translate-r-2px hover:text-gray-900'
+                  >
+                    {/* <img
+                      className='w-auto h-6 pr-1'
+                      src='https://i.imgur.com/2mdtBD3.png'
+                      alt='grobelDevIcon'
+                    ></img> */}
+                    <p className='flex flex-col justify-center'>
+                      whenshouldileave.com
+                    </p>
+                  </AnimatedA>
+
+                  <AnimatedA
+                    // eslint-disable-next-line no-script-url
+                    href='javascript:void(0);'
+                    onClick={() => scrollToRef(secondRef)}
+                    className='relative flex block px-2 py-1 -mx-2 font-medium text-gray-600 transition-fast hover:translate-r-2px hover:text-gray-900'
+                  >
+                    {/* <img
+                      className='w-auto h-6 pr-1'
+                      src='https://i.imgur.com/2mdtBD3.png'
+                      alt='grobelDevIcon'
+                    ></img> */}
+                    <p className='flex flex-col justify-center'>
+                      leagueofcomrades.com
+                    </p>
+                  </AnimatedA>
+                  <AnimatedA
+                    // eslint-disable-next-line no-script-url
+                    href='javascript:void(0);'
+                    onClick={() => scrollToRef(grobelRef)}
                     className='relative flex block px-2 py-1 -mx-2 font-medium text-gray-600 transition-fast hover:translate-r-2px hover:text-gray-900'
                   >
                     <img
@@ -98,45 +145,119 @@ export default function HomePage() {
               </nav>
             </div>
           </div>
-          <div
-            id='content-wrapper'
-            className='w-full min-h-screen lg:static lg:max-h-full lg:overflow-visible lg:w-3/4 xl:w-4/5'
-          >
-            <div id='content'>
-              <div id='app' className='flex'>
-                <div ref={myRef} className='w-full pt-24 pb-16 lg:pt-28'>
-                  <div className='max-w-3xl px-6 mx-auto mb-6 markdown lg:ml-0 lg:mr-auto xl:mx-0 xl:px-12 xl:w-3/4'>
-                    <h1 className='text-3xl font-light'>
-                      Grobel - Chrome Extension
-                    </h1>
-                    <div className='mt-0 mb-4 text-gray-600'>
-                      A Discord Webhook Companion.
-                    </div>
-                    <hr className='my-8 border-b-2 border-gray-200'></hr>
-                    <img
-                      src='https://cdn.discordapp.com/attachments/636565266356240394/648592273214275604/screenshot.png'
-                      alt='grobelExtensionImage'
-                    ></img>
-                    <div className='flex flex-grow w-full max-w-3xl px-6 mx-auto markdown xl:px-12 lg:ml-0 lg:mr-auto xl:mx-0 xl:w-3/4'></div>
-                  </div>
-                  <div className='flex'>
-                    <div className='w-full max-w-3xl px-6 mx-auto markdown xl:px-12 lg:ml-0 lg:mr-auto xl:mx-0 xl:w-3/4'>
-                      <p>
-                        Grobel is a simple one-click method for sharing websites
-                        + screenshots to Discord featuring whitelist and
-                        blacklist functionality, so you can be selective about
-                        what you share. <br></br>
-                        <br></br>It also includes an 'Auto-Grobel' feature, so
-                        you can automatically track personalized histories with
-                        screenshot context.
-                      </p>
-                      <br></br>
-                      <p>Grobel it! </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <Content
+            grobelRef={grobelRef}
+            firstRef={firstRef}
+            secondRef={secondRef}
+          ></Content>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Content({ children, grobelRef, firstRef, secondRef }) {
+  return (
+    <div
+      id='content-wrapper'
+      className='w-full min-h-screen lg:static lg:max-h-full lg:overflow-visible lg:w-3/4 xl:w-4/5'
+    >
+      <div id='content'>
+        <ContentBlock
+          myRef={firstRef}
+          title='whenshouldileave.com - Find the Best Time to Leave'
+          description='Find the best time to leave
+          with the lowest traffic.'
+          githubUrl='https://github.com/grobelDev/whenshouldileave.com'
+          projectUrl='https://whenshouldileave.com'
+          imageUrl='https://cdn.discordapp.com/attachments/636565266356240394/680036593066573874/screenshot.png'
+          imageAlt='When Should I Leave Project Screenshot'
+        >
+          <p>
+            'When Should I Leave' will give you an hour by hour breakdown of
+            traffic.. <br></br>
+            <br></br>Driving is better with the road to yourself.
+          </p>
+          <br></br>
+        </ContentBlock>
+        <ContentBlock
+          myRef={secondRef}
+          title='leagueofcomrades.com - Match History Between Friends'
+          description='Find detailed breakdowns of player specific match histories in League of Legends.'
+          githubUrl='https://github.com/grobelDev/league-of-comrades'
+          projectUrl='https://leagueofcomrades.com'
+          imageUrl='https://cdn.discordapp.com/attachments/636565266356240394/680035312667459617/screenshot.png'
+          imageAlt='League of Comrades Project Screenshot'
+        >
+          <p>
+            Look up your comrades and see who they play the most with in League
+            of Legends. <br></br>
+            <br></br>Find detailed breakdowns of player specific match
+            histories.
+          </p>
+          <br></br>
+        </ContentBlock>
+        <ContentBlock
+          myRef={grobelRef}
+          title='Grobel - Send Screenshots to Discord'
+          description='A Chrome Extension that lets you send screenshots to Discord without a Bot.'
+          githubUrl='https://github.com/grobelDev/grobel-v1-chrome-extension'
+          projectUrl='https://chrome.google.com/webstore/detail/grobel-discord-webhook-co/eeobebgelloiljapehlibobeapgmoanl?hl=en'
+          imageUrl='https://cdn.discordapp.com/attachments/636565266356240394/679986878996676620/screenshot.png'
+          imageAlt='grobelExtensionImage'
+        >
+          <p>
+            Grobel is a simple one-click method for sharing websites +
+            screenshots to Discord featuring whitelist and blacklist
+            functionality, so you can be selective about what you share.{' '}
+            <br></br>
+            <br></br>It also includes an 'Auto-Grobel' feature, so you can
+            automatically track personalized histories with screenshot context.
+          </p>
+          <br></br>
+          <p>Grobel it! </p>
+        </ContentBlock>
+      </div>
+    </div>
+  );
+}
+
+function ContentBlock({
+  myRef,
+  children,
+  title,
+  description,
+  githubUrl,
+  projectUrl,
+  imageUrl,
+  imageAlt
+}) {
+  return (
+    <div id='app' className='flex'>
+      <div ref={myRef} className='w-full pt-24 pb-16 lg:pt-28'>
+        <div className='max-w-3xl px-6 mx-auto mb-6 markdown lg:ml-0 lg:mr-auto xl:mx-0 xl:px-12 xl:w-3/4'>
+          <h1 className='text-3xl font-light'>{title}</h1>
+          <div className='mt-0 mb-4 text-gray-600'>{description}</div>
+
+          <hr className='my-8 border-b-2 border-gray-200'></hr>
+
+          <div className='shadow-lg rounded-lg'>
+            <a href={projectUrl}>
+              <img src={imageUrl} alt={imageAlt}></img>
+            </a>
+          </div>
+
+          <div className='flex flex-grow w-full max-w-3xl px-6 mx-auto markdown xl:px-12 lg:ml-0 lg:mr-auto xl:mx-0 xl:w-3/4'></div>
+        </div>
+        <div className='flex'>
+          <div className='w-full max-w-3xl px-6 mx-auto markdown xl:px-12 lg:ml-0 lg:mr-auto xl:mx-0 xl:w-3/4'>
+            <div>
+              <a className='text-blue-600' href={githubUrl}>
+                Link to Github Repo.
+              </a>
             </div>
+            <br></br>
+            {children}
           </div>
         </div>
       </div>

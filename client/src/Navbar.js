@@ -35,6 +35,9 @@ export default function Navbar() {
             </div>
             <div className='flex justify-end flex-grow'>
               <div className='flex items-center justify-start px-6'>
+                <div className='pr-6'>
+                  <Link to='/contact'>Contact</Link>
+                </div>
                 <div>
                   <Link to='/articles'>Articles</Link>
                 </div>

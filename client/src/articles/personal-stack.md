@@ -12,7 +12,7 @@ I hope you find this helpful.
 
 ### Step 1: Setup the initial repository.
 
-In my case, I tend to call the React side of my projects as `client`.
+In my case, I tend to call the React side of my projects `client`.
 
 ```
 mkdir client && cd $_

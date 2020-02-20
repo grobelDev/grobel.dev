@@ -16,6 +16,7 @@ import Navbar from './Navbar';
 import HomePage from './HomePage';
 import ArticlesDirectory from './ArticlesDirectory';
 import ArticlePage from './ArticlePage';
+import ContactPage from './ContactPage';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path='/articles/:name'>
           <ArticlePage></ArticlePage>
+        </Route>
+        <Route path='/contact'>
+          <ContactPage></ContactPage>
         </Route>
         <Route path='/'>404 Error!</Route>
       </Switch>
