@@ -41,7 +41,7 @@ export default function ArticlesDirectory() {
 
             return (
               <li className='py-2' key={`${article.title}`}>
-                <span className='text-blue-600'>
+                <span className='text-blue-700'>
                   <Link to={`/articles/${name}`}> {`${title}`}</Link>
                 </span>
               </li>

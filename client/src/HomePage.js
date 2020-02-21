@@ -51,6 +51,8 @@ export default function HomePage() {
                     spaghetti code. <br></br>
                     When I'm not coding, I'm often found Indoors or Near
                     Electricity.
+                    <br></br>
+                    Currently looking for a team of like-minded developers.{' '}
                     <br></br>There is always more spaghetti.
                   </p>
                   {/* <p className="mt-6 leading-relaxed text-gray-600 sm:text-lg md:text-xl xl:text-lg">
@@ -242,7 +244,7 @@ function ContentBlock({
           <hr className='my-8 border-b-2 border-gray-200'></hr>
 
           <div className='shadow-lg rounded-lg'>
-            <a href={projectUrl}>
+            <a href={projectUrl} target='_blank'>
               <img src={imageUrl} alt={imageAlt}></img>
             </a>
           </div>
@@ -252,7 +254,7 @@ function ContentBlock({
         <div className='flex'>
           <div className='w-full max-w-3xl px-6 mx-auto markdown xl:px-12 lg:ml-0 lg:mr-auto xl:mx-0 xl:w-3/4'>
             <div>
-              <a className='text-blue-600' href={githubUrl}>
+              <a className='text-blue-700' href={githubUrl} target='_blank'>
                 Link to Github Repo.
               </a>
             </div>

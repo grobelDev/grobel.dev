@@ -46,26 +46,32 @@ export default function ContactPage() {
         <div className='text-xl'>
           <li>
             Email:{' '}
-            <span className='text-blue-600'>
+            <span className='text-blue-700'>
               <a href='mailto:grobelDev@gmail.com'>grobelDev@gmail.com</a>
             </span>
           </li>
           <li>
             Github:{' '}
-            <span className='text-blue-600'>
-              <a href='https://github.com/grobelDev'>grobelDev</a>
+            <span className='text-blue-700'>
+              <a href='https://github.com/grobelDev' target='_blank'>
+                grobelDev
+              </a>
             </span>
           </li>
           <li>
             Twitter:{' '}
-            <span className='text-blue-600'>
-              <a href='https://twitter.com/grobelDev'>grobelDev</a>
+            <span className='text-blue-700'>
+              <a href='https://twitter.com/grobelDev' target='_blank'>
+                grobelDev
+              </a>
             </span>
           </li>
           <li>
             LinkedIn:{' '}
-            <span className='text-blue-600'>
-              <a href='https://www.linkedin.com/in/grobeldev2/'>grobelDev</a>
+            <span className='text-blue-700'>
+              <a href='https://www.linkedin.com/in/grobeldev2/' target='_blank'>
+                grobelDev
+              </a>
             </span>
           </li>
         </div>
