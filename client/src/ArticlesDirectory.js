@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, Suspense } from 'react';
 import styled from 'styled-components';
 import {
   // eslint-disable-next-line
@@ -14,26 +14,25 @@ import {
 
 import Articles from './ArticlePage';
 import articleInfo from './articles/articleInfo.js';
+import ErrorBoundary from './ErrorBoundary';
+
+import { fetchDirectory } from './api';
 
 export default function ArticlesDirectory() {
+  const [resource, setResource] = useState(fetchDirectory());
   let articles = articleInfo();
-
-  // console.log(articleInfo());
-  // const testFolder = '/articles/';
-  // const fs = require('fs');
-  // fs.readdir(testFolder, (err, files) => {
-  //   files.forEach(file => {
-  //     console.log(file);
-  //   });
-  // });
 
   return (
     <div>
       <Layout>
-        {/* <div className='py-4 text-3xl'>Articles</div> */}
         <PageTitle className='font-serif font-light leading-tight pb-4'>
           Articles
         </PageTitle>
+        <ErrorBoundary fallback={<div>Error in retrieving directory!</div>}>
+          <Suspense fallback={<div>Fetching articles...</div>}>
+            <DirectoryWrapper resource={resource}></DirectoryWrapper>
+          </Suspense>
+        </ErrorBoundary>
         <div className='text-xl'>
           {articles.map(article => {
             let title = article.title;
@@ -49,6 +48,39 @@ export default function ArticlesDirectory() {
           })}
         </div>
       </Layout>
+    </div>
+  );
+}
+
+function DirectoryWrapper({ resource }) {
+  // let titles = resource
+  // console.log('directory:', resource.directory.read());
+  let directoryResource = resource.directory.read();
+
+  // console.log(Object.entries(directoryResource));
+
+  let directoryArray = Object.entries(directoryResource);
+
+  // for (let [key, value] of Object.entries(directoryResource)) {
+  // console.log(`${key}: ${value}`);
+  // }
+
+  return (
+    <div>
+      {/* <div>{JSON.stringify(directoryResource)}</div> */}
+      <div>
+        {directoryArray.map(fileArray => {
+          let fileTitle = fileArray[1].title;
+          let fileDescription = fileArray[1].description;
+
+          return (
+            <li className='py-2' key={`${fileArray[1].title}`}>
+              <span className='text-xl text-blue-700'>{fileTitle}</span>
+              <div>{fileDescription}</div>
+            </li>
+          );
+        })}
+      </div>
     </div>
   );
 }
