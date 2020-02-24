@@ -1,7 +1,7 @@
 ---
 title: Setup Google Cloud Run with Create-React-App and Continuous CI/CD via Google Cloud Build for Virtually Free
 description: Learn how to setup Google Cloud Run with a containerized Create-React-App application complete with a continuous CI/CD pipeline that triggers a Google Cloud Build pipeline on every Github commit. At virtually zero cost.
-slug: react-google-cloud-run
+slug: react-cloud-run
 ---
 
 ## The End Result
