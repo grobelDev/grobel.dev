@@ -6,11 +6,11 @@ slug: react-google-cloud-run
 
 ## The End Result
 
-Repository:  
-https://github.com/grobelDev/react-google-cloud-run
-
 Project URL:  
 https://react-google-cloud-run-zxc6fpw5uq-uc.a.run.app/
+
+Repository:  
+https://github.com/grobelDev/react-google-cloud-run
 
 After completing the following steps, you should have a website with SSL certificates (that is, using `https://`) hosted on a public `run.app` URL for virtually free.
 
