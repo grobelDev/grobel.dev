@@ -92,7 +92,7 @@ function ArticlePageWrapper({ resource, slug }) {
       <ArticleTitle className='font-serif font-light leading-tight'>
         {title}
       </ArticleTitle>
-      <div className='pt-6'>{description}</div>
+      <div className='text-lg pt-6'>{description}</div>
       <ReactMarkdown source={content} className='markdown-body' />
 
       <div></div>
