@@ -27,7 +27,7 @@ async function getFileMeta(path) {
   return fileData;
 }
 
-async function getFileAttributes(path) {
+async function getFiles(path) {
   let filelist = await getFileList();
 
   let fileData = {};
@@ -37,7 +37,7 @@ async function getFileAttributes(path) {
 
     let fileContentFrontMatter = fm(fileContent);
 
-    fileData[`${filelist[i]}`] = fileContentFrontMatter.attributes;
+    fileData[`${filelist[i]}`] = fileContentFrontMatter;
   }
 
   return fileData;
@@ -69,5 +69,5 @@ async function readFileAsync(path) {
 module.exports = {
   getFileList: getFileList,
   getFileMeta: getFileMeta,
-  getFileAttributes: getFileAttributes
+  getFiles: getFiles
 };

@@ -588,12 +588,12 @@
 
 .markdown-body h2 {
   font-size: 1.5em;
+  padding-top: 2em;
 }
 
 .markdown-body h3 {
   font-size: 1.25em;
-  padding-top: 2em;
-
+  padding-top: 3em;
 }
 
 .markdown-body h4 {

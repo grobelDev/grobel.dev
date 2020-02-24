@@ -9,14 +9,14 @@
 //   };
 // }
 
-export function fetchDirectory() {
-  return { directory: wrapPromise(fetchDirectoryPromise()) };
+export function fetchArticles() {
+  return { articles: wrapPromise(fetcharticlesPromise()) };
 }
 
-function fetchDirectoryPromise() {
+function fetcharticlesPromise() {
   return new Promise(function(resolve, reject) {
     let url = 'https://grobel-dev-server-zxc6fpw5uq-uc.a.run.app';
-    let testUrl = 'http://localhost:8080/directory';
+    let testUrl = 'http://localhost:8080/';
 
     let env = process.env.NODE_ENV || 'development';
 
