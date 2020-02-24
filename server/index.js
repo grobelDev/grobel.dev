@@ -18,26 +18,12 @@ if (env === 'development') {
   app.use(cors(corsOptions));
 }
 
-// console.log(markdown.getFiles());
-
 app.get('/', async (req, res) => {
   try {
     let path = 'articles';
     let files = await markdown.getFiles(path);
     console.log(files);
     res.status(200).send(files);
-  } catch (err) {
-    console.log(err);
-    res.status(400).send(err);
-  }
-});
-
-app.get('/directory', async (req, res) => {
-  try {
-    let path = 'articles';
-    let fileAttributes = await markdown.getFileAttributes(path);
-    // console.log(fileAttributes);
-    res.status(200).send({ test: 'test' });
   } catch (err) {
     console.log(err);
     res.status(400).send(err);
