@@ -391,7 +391,7 @@ As multiple container images can run on a single machine, it's easy (on Google's
 
 The catch? Well, if we're constantly creating and destroying containers, then it's generally a bad idea to have an application dependent on persistent state.
 
-For instance, it would generally be a bad idea to containerize a database. Container images are ephemeral in practice. Ephemeral databases are a **bad practice**.
+For instance, it would generally be a bad idea to containerize a database on `Cloud Run` because images those containers are ephemeral in practice.
 
 If state is needed, then a container can just connect to a more traditionally hosted server/database.
 

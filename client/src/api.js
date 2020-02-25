@@ -10,10 +10,10 @@
 // }
 
 export function fetchArticles() {
-  return { articles: wrapPromise(fetcharticlesPromise()) };
+  return { articles: wrapPromise(fetchArticlesPromise()) };
 }
 
-function fetcharticlesPromise() {
+function fetchArticlesPromise() {
   return new Promise(function(resolve, reject) {
     let url = 'https://grobel-dev-server-zxc6fpw5uq-uc.a.run.app';
     let testUrl = 'http://localhost:8080/';
@@ -42,44 +42,7 @@ function fetcharticlesPromise() {
   });
 }
 
-// function fetchComrades(userName, userRegion) {
-//   return new Promise(function(resolve, reject) {
-//     let url = 'https://server-nch7pipeyq-uc.a.run.app';
-//     let testUrl = 'http://localhost:8080';
-
-//     // let currentUrl = url;
-//     let env = process.env.NODE_ENV || 'development';
-
-//     let currentUrl;
-
-//     env === 'development' ? (currentUrl = testUrl) : (currentUrl = url);
-
-//     let fetchUrl = new URL(currentUrl),
-//       params = { name: userName, region: userRegion };
-//     Object.keys(params).forEach(key =>
-//       fetchUrl.searchParams.append(key, params[key])
-//     );
-
-//     // fixes weird characters
-//     fetchUrl.href = encodeURI(fetchUrl);
-
-//     fetch(fetchUrl)
-//       .then(response => {
-//         if (!response.ok) {
-//           throw Error(response.statusText);
-//         }
-//         return response.json();
-//       })
-//       .then(myJson => {
-//         resolve(myJson);
-//       })
-//       .catch(error => {
-//         reject('Error:', error);
-//       });
-//   });
-// }
-
-function wrapPromise(promise) {
+sfunction wrapPromise(promise) {
   let status = 'pending';
   let result;
   let suspender = promise.then(

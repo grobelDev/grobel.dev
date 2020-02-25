@@ -54,7 +54,7 @@ export default function ArticlePage2() {
   return (
     <div>
       <Layout>
-        <ErrorBoundary fallback={<div>Error in retrieving article!</div>}>
+        <ErrorBoundary fallback={<div>Article does not exist!</div>}>
           <Suspense fallback={'Fetching article...'}>
             <ArticlePageWrapper
               resource={resource}
@@ -80,12 +80,8 @@ function ArticlePageWrapper({ resource, slug }) {
 
   let articleData = article[1];
 
-  let title = articleData.attributes.title;
-  let description = articleData.attributes.description;
-  let content = articleData.body;
-  //   console.log(article);
-
-  //   console.log(resultsArray);
+  const { title, description } = articleData.attributes;
+  const { body: content } = articleData;
 
   return (
     <Fragment>

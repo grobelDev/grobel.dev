@@ -39,9 +39,6 @@ function App() {
           <Route path='/contact'>
             <ContactPage></ContactPage>
           </Route>
-          {/* <Route path='/articles/:name'>
-            <ArticlePage></ArticlePage>
-          </Route> */}
           <Route path='/:slug'>
             <ArticlePage2></ArticlePage2>
           </Route>
