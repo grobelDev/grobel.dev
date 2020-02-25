@@ -42,7 +42,7 @@ function fetchArticlesPromise() {
   });
 }
 
-sfunction wrapPromise(promise) {
+function wrapPromise(promise) {
   let status = 'pending';
   let result;
   let suspender = promise.then(
