@@ -14,7 +14,7 @@ https://github.com/grobelDev/react-google-cloud-run
 
 After completing the following steps, you should have a website with SSL certificates (that is, using `https://`) hosted on a public `run.app` URL for virtually free.
 
-The website will also only use compute resources proportional to the number of users for the website.
+The website will also only use compute resources proportional to the number of users.
 
 That is, if there is only one user, only one container should be temporarily spun up to send the requested HTML/CSS files. If there are many users, or even a sudden influx of users (as in, your website goes viral), then an appropriate amount of containers (up to 1,000 simultaneously) should be dynamically spun up to meet the demand without significant impact to user experience.
 
@@ -204,7 +204,9 @@ steps:
     # - gcr.io/$PROJECT_ID/server
 ```
 
-If you follow the formatting listed here, it should be possible to grok the syntax of this file.
+You should be able to simply copy and paste the above code for your own project.
+
+The instructions say to look in the `./client` directory for the requested files and create an image called `react-google-cloud-run` project from the files there.
 
 I left in some commented out code to demonstrate what it would look like to have multiple build images in a single repository.
 
@@ -250,7 +252,7 @@ API's must first be enabled before being available to use in your project.
 
 Use the search bar at the top to find and activate the relevant API's.
 
-Enable the `Cloud Run API` for your project (Search Term: `Cloud Run`).
+Enable the `Cloud Run API` for your project (Search Term: `Cloud Run`).  
 Enable the `Cloud Build API` for your project (Search Term: `Cloud Build`).
 
 The `Cloud Run` and `Cloud Build` sections can also be pinned from the hamburger menu on the left for easier access.
@@ -391,7 +393,7 @@ As multiple container images can run on a single machine, it's easy (on Google's
 
 The catch? Well, if we're constantly creating and destroying containers, then it's generally a bad idea to have an application dependent on persistent state.
 
-For instance, it would generally be a bad idea to containerize a database on `Cloud Run` because images those containers are ephemeral in practice.
+For instance, it would generally be a bad idea to containerize the entirety of a database on `Cloud Run` because the service treats those containers as ephemeral in practice.
 
 If state is needed, then a container can just connect to a more traditionally hosted server/database.
 
