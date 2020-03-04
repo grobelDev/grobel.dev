@@ -95,7 +95,10 @@ function TailwindArticle() {
       className='py-2'
       key={`Setup Tailwind with Styled-Components in Create-React-App in 5 Minutes`}
     >
-      <a href='https://medium.com/@grobeldev/setup-tailwind-with-styled-components-in-create-react-app-in-5-minutes-50dd875f55c'>
+      <a
+        href='https://medium.com/@grobeldev/setup-tailwind-with-styled-components-in-create-react-app-in-5-minutes-50dd875f55c'
+        target='_blank'
+      >
         <span className='text-xl text-blue-700'>
           Setup Tailwind with Styled-Components in Create-React-App in 5 Minutes
         </span>
