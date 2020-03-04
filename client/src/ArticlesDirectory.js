@@ -67,7 +67,9 @@ function DirectoryWrapper({ resource }) {
   return (
     <div>
       {/* <div>{JSON.stringify(re)}</div> */}
+
       <div>
+        <TailwindArticle></TailwindArticle>
         {resultsArray.map(fileArray => {
           let fileTitle = fileArray[1].attributes.title;
           let fileDescription = fileArray[1].attributes.description;
@@ -84,6 +86,25 @@ function DirectoryWrapper({ resource }) {
         })}
       </div>
     </div>
+  );
+}
+
+function TailwindArticle() {
+  return (
+    <li
+      className='py-2'
+      key={`Setup Tailwind with Styled-Components in Create-React-App in 5 Minutes`}
+    >
+      <a href='https://medium.com/@grobeldev/setup-tailwind-with-styled-components-in-create-react-app-in-5-minutes-50dd875f55c'>
+        <span className='text-xl text-blue-700'>
+          Setup Tailwind with Styled-Components in Create-React-App in 5 Minutes
+        </span>
+      </a>
+      <div>
+        Instructions for setting up a starter project using Create React App
+        (CRA) + Tailwind CSS with Styled-Components as a CSS-in-JS solution.
+      </div>
+    </li>
   );
 }
 
