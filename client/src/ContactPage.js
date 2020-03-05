@@ -69,7 +69,7 @@ export default function ContactPage() {
           <li>
             LinkedIn:{' '}
             <span className='text-blue-700'>
-              <a href='https://www.linkedin.com/in/grobeldev2/' target='_blank'>
+              <a href='https://www.linkedin.com/in/grobeldev/' target='_blank'>
                 grobelDev
               </a>
             </span>
