@@ -262,51 +262,52 @@ Now put this code inside it. Replace all instances of `react-google-cloud-run` w
 
 ```yaml
 steps:
-    # build the container images
-    - name: 'gcr.io/cloud-builders/docker'
-      args: ['build', '-t', 'gcr.io/$PROJECT_ID/react-google-cloud-run', './client']
-    # - name: 'gcr.io/cloud-builders/docker'
-    #   args: ['build', '-t', 'gcr.io/$PROJECT_ID/server', './server']
+  # build the container images
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      ['build', '-t', 'gcr.io/$PROJECT_ID/react-google-cloud-run', './client']
+  # - name: 'gcr.io/cloud-builders/docker'
+  #   args: ['build', '-t', 'gcr.io/$PROJECT_ID/server', './server']
 
-    # push the container images to Container Registry
-    - name: 'gcr.io/cloud-builders/docker'
-      args: ['push', 'gcr.io/$PROJECT_ID/react-google-cloud-run']
-    # - name: 'gcr.io/cloud-builders/docker'
-    # args: ['push', 'gcr.io/$PROJECT_ID/server']
+  # push the container images to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/react-google-cloud-run']
+  # - name: 'gcr.io/cloud-builders/docker'
+  # args: ['push', 'gcr.io/$PROJECT_ID/server']
 
-    # Deploy container images to Cloud Run
-    - name: 'gcr.io/cloud-builders/gcloud'
-      args:
-        [
-          'run',
-          'deploy',
-          'react-google-cloud-run',
-          '--image',
-          'gcr.io/$PROJECT_ID/react-google-cloud-run',
-          '--region',
-          'us-central1',
-          '--platform',
-          'managed',
-          '--quiet',
-          '--allow-unauthenticated',
-        ]
-    # - name: 'gcr.io/cloud-builders/gcloud'
-    #   args:
-    #     [
-    #       'run',
-    #       'deploy',
-    #       'server',
-    #       '--image',
-    #       'gcr.io/$PROJECT_ID/server',
-    #       '--region',
-    #       'us-central1',
-    #       '--platform',
-    #       'managed',
-    #       '--quiet',
-    #     ]
-  images:
-    - gcr.io/$PROJECT_ID/react-google-cloud-run
-    # - gcr.io/$PROJECT_ID/server
+  # Deploy container images to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      [
+        'run',
+        'deploy',
+        'react-google-cloud-run',
+        '--image',
+        'gcr.io/$PROJECT_ID/react-google-cloud-run',
+        '--region',
+        'us-central1',
+        '--platform',
+        'managed',
+        '--quiet',
+        '--allow-unauthenticated',
+      ]
+  # - name: 'gcr.io/cloud-builders/gcloud'
+  #   args:
+  #     [
+  #       'run',
+  #       'deploy',
+  #       'server',
+  #       '--image',
+  #       'gcr.io/$PROJECT_ID/server',
+  #       '--region',
+  #       'us-central1',
+  #       '--platform',
+  #       'managed',
+  #       '--quiet',
+  #     ]
+images:
+  - gcr.io/$PROJECT_ID/react-google-cloud-run
+  # - gcr.io/$PROJECT_ID/server
 ```
 
 You should be able to simply copy and paste the above code for your own project.
