@@ -193,9 +193,10 @@ export default function App() {
     <Fragment>
       <Switch>
         <Route exact path='/'>
-          <div>Welcome to the HomePage</div>
+          <div className='text-4xl font-bold text-center text-blue-500'>
+            Welcome to the HomePage
+          </div>
         </Route>
-
         <Route path='/'>
           <div>404 Error!</div>
         </Route>
