@@ -42,6 +42,7 @@ npx tailwind init &&
 npm install -D @fullhuman/postcss-purgecss &&
 npm install --save styled-components &&
 npm install react-router-dom &&
+npm install @tailwindcss/ui &&
 npm audit fix
 ```
 
@@ -53,10 +54,11 @@ rm src/App.test.js src/App.css src/index.css src/logo.svg src/serviceWorker.js s
 
 ### Step 3: Create Configuration Files
 
-Let's create some empty configuration files.
+We will be altering three total configuration files.
 
 - `./postcss.config.js`
 - `./src/css/tailwind.src.css`
+- `./tailwind.config.js`
 
 Create these files with:
 
@@ -77,7 +79,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   content: ['./src/**/*.jsx', './src/**/*.js', './public/index.html'],
   css: ['./src/tailwind.css'],
   // Include any special characters you're using in this regular expression
-  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+  defaultExtractor: content => content.match(/[\w-/.:]+(?<!:)/g) || []
 });
 
 module.exports = {
@@ -95,6 +97,32 @@ module.exports = {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+```
+
+#### `./public/index.html`
+
+Add the `inter` font at the head of the `.html` to ensure standardized fonts.
+
+```html
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+```
+
+#### `./tailwind.config.js`
+
+```js
+// tailwind.config.js
+const defaultTheme = require('tailwindcss/defaultTheme');
+
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans]
+      }
+    }
+  },
+  plugins: [require('@tailwindcss/ui')]
+};
 ```
 
 ### Step 5: Final Setup
