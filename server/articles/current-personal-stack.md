@@ -1,7 +1,7 @@
 ---
 title: Current Personal Starting Point for Web Development
 description: (Last updated 2020-03-12 - YYYY-MM-DD) This is more for personal reference, but this is currently my starting point whenever I start creating a website.
-slug: current-starting-point
+slug: current-starter
 ---
 
 This is my personal stack when starting a new project.  
