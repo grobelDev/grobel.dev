@@ -5,12 +5,14 @@ slug: express-starter
 date: 2020-03-17 02:18:23
 ---
 
-This creates a simple hello world Express server deployed on Google Cloud Run with continuous CI/CD from Google Cloud Build.
+This creates a simple `Hello World` Express server configured with testing deployed on Google Cloud Run with continuous CI/CD from Google Cloud Build.
 
 Most of the information here was referenced from:  
 https://cloud.google.com/run/docs/quickstarts/build-and-deploy
 
 ## Setup
+
+### 1. Directory, `package.json`, and `.gitignore`
 
 First, let's make the directory and `cd` into it.
 
@@ -32,21 +34,68 @@ Then, put this code inside it:
 
 ```json
 {
-  "name": "express app",
+  "name": "express-app",
   "version": "1.0.0",
   "description": "Does server related things.",
   "author": "grobelDev",
   "scripts": {
+    "test": "jest",
     "dev": "nodemon",
     "start": "node server.js"
   },
-  "license": "Apache-2.0",
-  "dependencies": {
-    "express": "^4.16.4",
-    "nodemon": "^2.0.2"
-  }
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": ["/node_modules/"]
+  },
+  "license": "Apache-2.0"
 }
 ```
+
+Consider the `package.json` to be the DNA of your server. It's the file that dictates how everything in your server should be run.
+
+Inside are some commands for setting up testing and whatnot.
+
+Now, let's install our dependencies:
+
+```
+npm install --save-dev express nodemon jest supertest
+```
+
+Let's also create a `.gitignore` file:
+
+```
+touch .gitignore
+```
+
+#### `.gitignore`
+
+```
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+```
+
+### 2. `server.js` and `tests/sample.test.js`
 
 If you look at the `scripts` section, we have a `start` command. This command requires the existence of a `server.js` file to actually run our application.
 
@@ -78,6 +127,36 @@ app.listen(port, () => {
   console.log('Hello world listening on port', port);
 });
 ```
+
+Now let's also set up testing.
+
+Make the tests directory with:
+
+```
+mkdir tests
+```
+
+Then make a `sample.test.js` file with:
+
+```
+touch tests/sample.tests.js
+```
+
+#### `tests/sample.tests.js`
+
+```js
+describe('Sample Test', () => {
+  it('should test that true === true', () => {
+    expect(true).toBe(true);
+  });
+});
+```
+
+If you now run the `npm test` command, you should now be able to see passing test cases.
+
+### 3. `Dockerfile`
+
+Time to containerize.
 
 Now, let's create a Dockerfile:
 
@@ -112,9 +191,13 @@ COPY . ./
 CMD [ "npm", "start" ]
 ```
 
-### Exclusions (optional)
+### 4. Extra Exclusions (optional)
 
 The following files are only necessary to make the container images smaller.
+
+```
+touch .dockerignore .gcloudignore
+```
 
 #### `.dockerignore`
 
@@ -133,13 +216,15 @@ node_modules
 npm-debug.log
 ```
 
+### 4. Setting up CI/CD with Google Cloud Build and Google Cloud Run
+
 Now let's set up the CI/CD pipeline with a `cloudbuild.yaml` file.
 
 First create the file:
 
 ```
 cd .. &&
-touch cloudbuild.yml
+touch cloudbuild.yaml
 ```
 
 Make sure to replace `<PROJECT NAME>` with whatever your actual project name is.
