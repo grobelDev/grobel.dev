@@ -10,8 +10,6 @@ This creates a simple `Hello World` Express server configured with testing deplo
 Most of the information here was referenced from:  
 https://cloud.google.com/run/docs/quickstarts/build-and-deploy
 
-## Setup
-
 ### 1. Directory, `package.json`, and `.gitignore`
 
 First, let's make the directory and `cd` into it.
