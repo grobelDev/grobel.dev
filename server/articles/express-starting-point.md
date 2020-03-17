@@ -10,13 +10,15 @@ This creates a simple `Hello World` Express server configured with testing deplo
 Most of the information here was referenced from:  
 https://cloud.google.com/run/docs/quickstarts/build-and-deploy
 
-### 1. Directory, `package.json`, and `.gitignore`
+### 1. Create the `server` directory
 
 First, let's make the directory and `cd` into it.
 
 ```
 mkdir server && cd $_
 ```
+
+### 2. Create `package.json`
 
 Now, let's setup our `package.json` file. This will let us easily install our dependencies later.
 
@@ -32,14 +34,14 @@ Then, put this code inside it:
 
 ```json
 {
-  "name": "express-app",
+  "name": "express-server",
   "version": "1.0.0",
   "description": "Does server related things.",
   "author": "grobelDev",
   "scripts": {
     "test": "jest",
     "dev": "nodemon",
-    "start": "node app.js"
+    "start": "node server.js"
   },
   "jest": {
     "testEnvironment": "node",
@@ -49,9 +51,7 @@ Then, put this code inside it:
 }
 ```
 
-Consider the `package.json` to be the DNA of your server. It's the file that dictates how everything in your server should be run.
-
-Inside are some commands for setting up testing and whatnot.
+### 3. Install Dependencies
 
 Now, let's install our dependencies:
 
@@ -93,19 +93,15 @@ yarn-debug.log*
 yarn-error.log*
 ```
 
-### 2. `app.js` and `tests/sample.test.js`
+### 4. Separate the `app` from the `server`
 
-If you look at the `scripts` section, we have a `start` command. This command requires the existence of a `app.js` file to actually run our application.
+This is because we don't want our application listening to the port after testing.
 
-So, let's do that.
-
-Create the file:
+Create the files:
 
 ```
-touch app.js
+touch app.js server.js
 ```
-
-Then put this boilerplate inside it:
 
 #### `app.js`:
 
@@ -116,17 +112,26 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  console.log('Hello world received a request.');
-
-  const target = process.env.TARGET || 'World';
-  res.send(`Hello ${target}!`);
+  res.status(200).send('Hello World!');
 });
+
+module.exports = app;
+```
+
+#### `server.js`:
+
+```js
+const app = require('./app');
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
-  console.log('Hello world listening on port', port);
+  console.log('App is listening on port', port);
 });
 ```
+
+This setup means that we can start the server with `node server.js` and can also import `app.js` for testing.
+
+### 5. Setup Testing with Jest
 
 Now let's also set up testing.
 
@@ -145,16 +150,20 @@ touch tests/sample.tests.js
 #### `tests/sample.tests.js`:
 
 ```js
-describe('Sample Test', () => {
-  it('should test that true === true', () => {
-    expect(true).toBe(true);
+const request = require('supertest');
+const app = require('../app.js');
+
+describe('Test the root path', () => {
+  test('It should response the GET method', async () => {
+    const response = await request(app).get('/');
+    expect(response.statusCode).toBe(200);
   });
 });
 ```
 
 If you now run the `npm test` command, you should now be able to see passing test cases.
 
-### 3. `Dockerfile`
+### 6. Create `Dockerfile`
 
 Time to containerize.
 
@@ -191,7 +200,7 @@ COPY . ./
 CMD [ "npm", "start" ]
 ```
 
-### 4. Extra Exclusions (optional)
+### 7. Extra Exclusions (optional)
 
 The following files are only necessary to make the container images smaller.
 
@@ -216,7 +225,7 @@ node_modules
 npm-debug.log
 ```
 
-### 4. Setting up CI/CD with Google Cloud Build and Google Cloud Run
+### 8. Setting up CI/CD with Google Cloud Build and Google Cloud Run
 
 Now let's set up the CI/CD pipeline with a `cloudbuild.yaml` file.
 
