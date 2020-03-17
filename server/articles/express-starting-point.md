@@ -39,7 +39,7 @@ Then, put this code inside it:
   "scripts": {
     "test": "jest",
     "dev": "nodemon",
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "jest": {
     "testEnvironment": "node",
@@ -93,21 +93,21 @@ yarn-debug.log*
 yarn-error.log*
 ```
 
-### 2. `server.js` and `tests/sample.test.js`
+### 2. `app.js` and `tests/sample.test.js`
 
-If you look at the `scripts` section, we have a `start` command. This command requires the existence of a `server.js` file to actually run our application.
+If you look at the `scripts` section, we have a `start` command. This command requires the existence of a `app.js` file to actually run our application.
 
 So, let's do that.
 
 Create the file:
 
 ```
-touch server.js
+touch app.js
 ```
 
 Then put this boilerplate inside it:
 
-#### `server.js`:
+#### `app.js`:
 
 ```js
 'use strict';
