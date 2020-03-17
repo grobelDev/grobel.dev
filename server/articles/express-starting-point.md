@@ -28,7 +28,7 @@ touch package.json
 
 Then, put this code inside it:
 
-#### `package.json`
+#### `package.json`:
 
 ```json
 {
@@ -65,7 +65,7 @@ Let's also create a `.gitignore` file:
 touch .gitignore
 ```
 
-#### `.gitignore`
+#### `.gitignore`:
 
 ```
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
@@ -107,6 +107,8 @@ touch server.js
 
 Then put this boilerplate inside it:
 
+#### `server.js`:
+
 ```js
 'use strict';
 
@@ -140,7 +142,7 @@ Then make a `sample.test.js` file with:
 touch tests/sample.tests.js
 ```
 
-#### `tests/sample.tests.js`
+#### `tests/sample.tests.js`:
 
 ```js
 describe('Sample Test', () => {
@@ -164,7 +166,7 @@ touch Dockerfile
 
 Put this code inside it.
 
-#### `Dockerfile`
+#### `Dockerfile`:
 
 ```Dockerfile
 # Use the official lightweight Node.js 12 image.
@@ -197,7 +199,7 @@ The following files are only necessary to make the container images smaller.
 touch .dockerignore .gcloudignore
 ```
 
-#### `.dockerignore`
+#### `.dockerignore`:
 
 ```
 Dockerfile
@@ -206,7 +208,7 @@ node_modules
 npm-debug.log
 ```
 
-#### `.gcloudignore`
+#### `.gcloudignore`:
 
 ```
 README.md
@@ -227,7 +229,7 @@ touch cloudbuild.yaml
 
 Make sure to replace `<PROJECT NAME>` with whatever your actual project name is.
 
-#### `cloudbuild.yaml`
+#### `cloudbuild.yaml`:
 
 ```yaml
 steps:
