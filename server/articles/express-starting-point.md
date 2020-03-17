@@ -40,6 +40,7 @@ Then, put this code inside it:
   "author": "grobelDev",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "dev": "nodemon",
     "start": "node server.js"
   },
@@ -162,6 +163,10 @@ describe('Test the root path', () => {
 ```
 
 If you now run the `npm test` command, you should now be able to see passing test cases.
+
+There is also the option of running `npm test:watch` if you want it to reload the tests after every change.
+
+All of these commands can be seen in the `scripts` section from the earlier `package.json` file.
 
 ### 6. Create `Dockerfile`
 
