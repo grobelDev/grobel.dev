@@ -145,10 +145,10 @@ mkdir tests
 Then make a `sample.test.js` file with:
 
 ```
-touch tests/sample.tests.js
+touch tests/sample.test.js
 ```
 
-#### `tests/sample.tests.js`:
+#### `tests/sample.test.js`:
 
 ```js
 const request = require('supertest');
