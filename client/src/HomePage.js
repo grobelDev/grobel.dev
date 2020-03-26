@@ -55,10 +55,7 @@ export default function HomePage() {
                     Currently looking for a team of like-minded developers.{' '}
                     <br></br>There is always more spaghetti.
                   </p>
-                  {/* <p className="mt-6 leading-relaxed text-gray-600 sm:text-lg md:text-xl xl:text-lg">
-              I believe in maintanable code and in doing my part against
-              spaghetti code.
-            </p> */}
+
                   <div
                     onClick={() => scrollToRef(firstRef)}
                     className='flex justify-start mt-6 md:justify-center xl:justify-start'
@@ -219,6 +216,51 @@ function Content({ children, grobelRef, firstRef, secondRef }) {
           <br></br>
           <p>Grobel it! </p>
         </ContentBlock>
+        <ContentBlockTemp
+          title='coronavirusmango.com'
+          description='A website that aims to give relevant information for preventative measures for COVID-19.'
+          // githubUrl='https://github.com/grobelDev/grobel-v1-chrome-extension'
+          projectUrl='https://coronavirusmango.com'
+          imageUrl='https://cdn.discordapp.com/attachments/661839525089116193/692676358081347654/screenshot.png'
+          imageAlt='coronavirusmangoImage'
+        >
+          <p>
+            This website aims to provide meaningful information for the Wuhan
+            Coronavirus (2019-nCoV).
+          </p>
+          <br></br>
+        </ContentBlockTemp>
+        {/* <ContentBlock
+          myRef={grobelRef}
+          title='Grobel - Send Screenshots to Discord'
+          description='A Chrome Extension that lets you send screenshots to Discord without a Bot.'
+          githubUrl='https://github.com/grobelDev/grobel-v1-chrome-extension'
+          projectUrl='https://chrome.google.com/webstore/detail/grobel-discord-webhook-co/eeobebgelloiljapehlibobeapgmoanl?hl=en'
+          imageUrl='https://cdn.discordapp.com/attachments/636565266356240394/680047056428990464/screenshot.png'
+          imageAlt='grobelExtensionImage'
+        >
+          <p>
+            Grobel is a simple one-click method for sharing websites +
+            screenshots to Discord featuring whitelist and blacklist
+            functionality, so you can be selective about what you share.{' '}
+            <br></br>
+            <br></br>It also includes an 'Auto-Grobel' feature, so you can
+            automatically track personalized histories with screenshot context.
+          </p>
+          <br></br>
+          <p>Grobel it! </p>
+        </ContentBlock> */}
+        <ContentBlockTemp
+          title='viteramen.com mockup'
+          description='A reimagined website for https://viteramen.com.'
+          // githubUrl='https://github.com/grobelDev/grobel-v1-chrome-extension'
+          projectUrl='https://viteramen-zxc6fpw5uq-uc.a.run.app/'
+          imageUrl='https://cdn.discordapp.com/attachments/661839525089116193/692677207734222919/screenshot.png'
+          imageAlt='viteramenImage'
+        >
+          <p>A mockup for viteramen.com</p>
+          <br></br>
+        </ContentBlockTemp>
       </div>
     </div>
   );
@@ -243,7 +285,50 @@ function ContentBlock({
 
           <hr className='my-8 border-b-2 border-gray-200'></hr>
 
-          <div className='shadow-lg rounded-lg'>
+          <div className='rounded-lg shadow-lg'>
+            <a href={projectUrl} target='_blank'>
+              <img src={imageUrl} alt={imageAlt}></img>
+            </a>
+          </div>
+
+          <div className='flex flex-grow w-full max-w-3xl px-6 mx-auto markdown xl:px-12 lg:ml-0 lg:mr-auto xl:mx-0 xl:w-3/4'></div>
+        </div>
+        <div className='flex'>
+          <div className='w-full max-w-3xl px-6 mx-auto markdown xl:px-12 lg:ml-0 lg:mr-auto xl:mx-0 xl:w-3/4'>
+            <div>
+              <a className='text-blue-700' href={githubUrl} target='_blank'>
+                Link to Github Repo.
+              </a>
+            </div>
+            <br></br>
+            {children}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ContentBlockTemp({
+  // myRef,
+  children,
+  title,
+  description,
+  githubUrl,
+  projectUrl,
+  imageUrl,
+  imageAlt
+}) {
+  return (
+    <div id='app' className='flex'>
+      <div className='w-full pt-24 pb-16 lg:pt-28'>
+        <div className='max-w-3xl px-6 mx-auto mb-6 markdown lg:ml-0 lg:mr-auto xl:mx-0 xl:px-12 xl:w-3/4'>
+          <h1 className='text-3xl font-light'>{title}</h1>
+          <div className='mt-0 mb-4 text-gray-600'>{description}</div>
+
+          <hr className='my-8 border-b-2 border-gray-200'></hr>
+
+          <div className='rounded-lg shadow-lg'>
             <a href={projectUrl} target='_blank'>
               <img src={imageUrl} alt={imageAlt}></img>
             </a>
