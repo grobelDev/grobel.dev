@@ -1,6 +1,6 @@
 ---
-title: Create Tic Tac Toe with React Hooks, useState, and useEffect
-description: Learn how to create Tic Tac Toe in React by utilizing React hooks like useState and useEffect.
+title: Build Tic Tac Toe with React Hooks, useState, and useEffect - Introductory Tutorial
+description: Learn how to create Tic Tac Toe in React by utilizing React hooks like useState and useEffect with this Introductory Tutorial.
 slug: react-hooks-tic-tac-toe
 ---
 
@@ -844,7 +844,7 @@ function App() {
 export default App;
 ```
 
-Lets also make it so that we only add values if the space is `null` (has not been selected yet).
+Let's also make it so that we only add values if the space is `null` (has not been selected yet).
 
 ```js
 import React, { useState, useEffect } from 'react';
@@ -1263,6 +1263,111 @@ export default App;
 
 Let's also make it so that the State stops changing after if a winner is determined.
 
+```js
+import React, { useState, useEffect } from 'react';
+import './App.css';
+
+function App() {
+  const [gameState, setGameState] = useState(Array(9).fill(null));
+  const [xIsNext, setXIsNext] = useState(true);
+  const [gameResult, setGameResult] = useState();
+
+  useEffect(() => {
+    console.log(gameState);
+
+    // Returns TRUE if there are no more NULL elements in gameState
+    let isDraw = !gameState.some(element => {
+      return element === null;
+    });
+
+    let victor = calculateWinner(gameState);
+    if (victor) {
+      setGameResult(`${victor} has won!`);
+      console.log(`${victor} has won!`);
+    } else if (isDraw) {
+      setGameResult('Game is a draw!');
+      console.log('Game is a draw!');
+    }
+  }, [gameState]);
+
+  function calculateWinner(gameState) {
+    const possibleLines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
+    ];
+
+    // go over all possibly winning lines and check if they consist of only X's/only O's
+    for (let i = 0; i < possibleLines.length; i++) {
+      const [a, b, c] = possibleLines[i];
+      if (
+        gameState[a] &&
+        gameState[a] === gameState[b] &&
+        gameState[a] === gameState[c]
+      ) {
+        return gameState[a];
+      }
+    }
+    return null;
+  }
+
+  function Square({ index }) {
+    let value = gameState[index];
+    return (
+      <button
+        className='square'
+        onClick={() => {
+          let gameStateCopy = gameState.slice();
+          if (!gameResult) {
+            if (!value) {
+              if (xIsNext) {
+                gameStateCopy[index] = 'X';
+              } else {
+                gameStateCopy[index] = 'O';
+              }
+              setXIsNext(!xIsNext);
+              setGameState(gameStateCopy);
+            }
+          }
+        }}
+      >
+        {value}
+      </button>
+    );
+  }
+
+  return (
+    <div className='App'>
+      <header className='App-header'>
+        <div>
+          <Square index={0}></Square>
+          <Square index={1}></Square>
+          <Square index={2}></Square>
+        </div>
+        <div>
+          <Square index={3}></Square>
+          <Square index={4}></Square>
+          <Square index={5}></Square>
+        </div>
+        <div>
+          <Square index={6}></Square>
+          <Square index={7}></Square>
+          <Square index={8}></Square>
+        </div>
+        <div>{gameResult}</div>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
 ![](https://cdn.discordapp.com/attachments/636565266356240394/693842496584810516/unknown.png)
 
 ### Step 9: Adding a Reset Button
@@ -1415,7 +1520,7 @@ And that, as they say, is that.
 
 Thanks for reading. I hope you found this helpful.
 
-Try out the final result here:
+Try out the final result here:  
 https://react-hooks-tic-tac-toe-zxc6fpw5uq-uc.a.run.app/
 
 Here is the respository:  

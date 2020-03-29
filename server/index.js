@@ -33,11 +33,3 @@ app.get('/', async (req, res) => {
 app.listen(8080, err => {
   console.log('Listening on port 8080');
 });
-
-// async function debug() {
-//   //   return await markdown.getFileList();
-//   let path = 'articles';
-//   return await markdown.getFileMeta(path);
-// }
-
-// console.log(await debug());
