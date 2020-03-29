@@ -1,8 +1,10 @@
 ---
 title: Build Tic Tac Toe with React Hooks, useState, and useEffect - Introductory Tutorial
-description: Learn how to create Tic Tac Toe in React by utilizing React hooks like useState and useEffect with this Introductory Tutorial.
+description: Learn how to create Tic Tac Toe in React by utilizing React hooks like useState and useEffect in this step-by-step guide.
 slug: react-hooks-tic-tac-toe
 ---
+
+Learn how to create Tic Tac Toe in React by utilizing React hooks like useState and useEffect in this step-by-step guide.
 
 By the end of this guide, we will have implemented tic-tac-toe in React by utilizing `useState` and `useEffect`.
 
@@ -15,7 +17,7 @@ https://react-hooks-tic-tac-toe-zxc6fpw5uq-uc.a.run.app/
 The repository is here:
 https://github.com/grobelDev/tic-tac-toe-hooks
 
-### Step 1: create-react-app
+## Step 1: create-react-app
 
 Let's begin from the `create-react-app` template.
 
@@ -36,13 +38,13 @@ Test the installation by running `npm start` from the terminal.
 You should see an output that looks like this:  
 https://react-google-cloud-run-zxc6fpw5uq-uc.a.run.app/
 
-### Step 2: Clean some boilerplate
+## Step 2: Clean some boilerplate
 
 From here on, it will be assumed that our terminal is currently inside the `./client` directory.
 
 Most of our code is going to be located in `./src/App.js`, so let's take a look at it.
 
-#### `./src/App.js`
+### `./src/App.js`
 
 ```js
 import React from 'react';
@@ -104,7 +106,7 @@ Tic-Tac-Toe is a game where players fill in some squares in a 3x3 grid.
 
 Before we worry about tracking the game state, we need some squares.
 
-So lets create that.
+So let's create that.
 
 ```js
 import React from 'react';
@@ -127,7 +129,7 @@ export default App;
 
 As the game requires clicking on the squares, I've gone ahead and made them `<buttons>` instead of as vanilla `<div>`'s.
 
-I want to be able to render text inside the squares, so lets pass in a value to our `<Square>`.
+I want to be able to render text inside the squares, so let's pass in a value to our `<Square>`.
 
 ```js
 import React from 'react';
@@ -148,7 +150,7 @@ function App() {
 export default App;
 ```
 
-Now, lets try rendering the `<Square>` component.
+Now, let's try rendering the `<Square>` component.
 
 ```js
 import React from 'react';
@@ -174,7 +176,7 @@ export default App;
 Current Snapshot:  
 ![](https://cdn.discordapp.com/attachments/636565266356240394/693817699448389642/screenshot.png)
 
-That's one `<Square>`. We'll need 9 in total, so lets spawn in the rest.
+That's one `<Square>`. We'll need 9 in total, so let's spawn in the rest.
 
 ```js
 import React from 'react';
@@ -208,7 +210,7 @@ export default App;
 Current Snapshot:  
 ![](https://cdn.discordapp.com/attachments/636565266356240394/693815584974045194/screenshot.png)
 
-Lets make the squares look a little nicer.
+let's make the squares look a little nicer.
 
 Go to the `App.css` file and add this snippet of CSS.
 
@@ -225,7 +227,7 @@ Go to the `App.css` file and add this snippet of CSS.
 }
 ```
 
-Now lets apply this CSS class to our `<Square>` component.
+Now let's apply this CSS class to our `<Square>` component.
 
 #### `App.js`
 
@@ -261,7 +263,7 @@ export default App;
 Snapshot:  
 ![](https://cdn.discordapp.com/attachments/636565266356240394/693816330956308541/screenshot.png)
 
-We want a 3x3 grid, so lets split up the `<Square>` divs to reflect that.
+We want a 3x3 grid, so let's split up the `<Square>` divs to reflect that.
 
 ```js
 import React from 'react';
@@ -311,7 +313,7 @@ First, we need something that will track the State of all of our individual `<Sq
 
 The Game needs this information to determine who won the game.
 
-So lets start by using an `Array` to represent the Game's State.
+So let's start by using an `Array` to represent the Game's State.
 
 ```js
 import React, { useState } from 'react';
@@ -354,7 +356,7 @@ Two lines were changed.
 
 First, note that `useState` is now imported from the first line.
 
-Secondly, lets look at this line here.
+Secondly, let's look at this line here.
 
 ```js
 const [gameState, setGameState] = useState(Array(9).fill(null));
@@ -376,9 +378,9 @@ That is, we have initialized the value of `gameState` to be an empty `Array` of 
 
 ### Step 5: Connecting State to `<Square>`
 
-Now, lets connect our newly created State to our `<Square>` components.
+Now, let's connect our newly created State to our `<Square>` components.
 
-First, lets add a new `prop` to `<Square>` called `value`.
+First, let's add a new `prop` to `<Square>` called `value`.
 
 `Value` will be responsible for the text that is shown in our `<Square>`.
 
@@ -420,7 +422,7 @@ function App() {
 export default App;
 ```
 
-Then, lets connect `value` to our `gameState`.
+Then, let's connect `value` to our `gameState`.
 
 The method of doing this is simple, all we have to do is set the `value` of `<Square>` to be equal to `gameState[i]` as we conveniently used `index` to tag our `<Square>`'s earlier.
 
@@ -465,7 +467,7 @@ export default App;
 Snapshot:  
 ![](https://cdn.discordapp.com/attachments/636565266356240394/693825365184872483/screenshot.png)
 
-Lets cause our State to change every time we click a `<Square>`.
+let's cause our State to change every time we click a `<Square>`.
 
 We do this by adding an `onClick` function `prop` to our `<Square>` function.
 
@@ -523,7 +525,7 @@ Try clicking on the buttons. They should now create X's! Progress.
 Snapshot (showing some example clicks, yours might look different):
 ![](https://cdn.discordapp.com/attachments/636565266356240394/693827499116986428/screenshot.png)
 
-Lets take a look at the `onClick`.
+let's take a look at the `onClick`.
 
 ```js
 <button
@@ -723,7 +725,7 @@ Moving on...
 
 ### Step 7: Adding Two Players
 
-Lets add a second character to the game.
+let's add a second character to the game.
 
 We're just going to be alternating between two different characters, so we can represent that state with a simple `boolean` called `xIsNext`.
 
@@ -783,7 +785,7 @@ export default App;
 
 We set `xIsNext`'s initial value to `true` as we're going to make `X` go first.
 
-So lets now change the `<Square>` code to use our newly created State.
+So let's now change the `<Square>` code to use our newly created State.
 
 ```js
 import React, { useState, useEffect } from 'react';
@@ -912,7 +914,7 @@ Great! Looks like our state is being recorded properly.
 Snapshot:
 ![](https://cdn.discordapp.com/attachments/636565266356240394/693837096602959982/unknown.png)
 
-### Step 8: Determining Who Won the Game
+## Step 8: Determining Who Won the Game
 
 Let's now create a function to determine if the a Player has won the game.
 
@@ -1370,7 +1372,7 @@ export default App;
 
 ![](https://cdn.discordapp.com/attachments/636565266356240394/693842496584810516/unknown.png)
 
-### Step 9: Adding a Reset Button
+## Step 9: Adding a Reset Button
 
 Lastly, let's add a RESET button to start a new game.
 
@@ -1528,3 +1530,5 @@ https://github.com/grobelDev/tic-tac-toe-hooks
 
 Final Snapshot:
 ![](https://cdn.discordapp.com/attachments/636565266356240394/693844936574894140/unknown.png)
+
+![](https://cdn.discordapp.com/attachments/636565266356240394/693858495656755231/screenshot.png)
