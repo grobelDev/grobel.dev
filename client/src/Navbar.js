@@ -6,7 +6,7 @@ import {
   BrowserRouter as Router,
   // Switch,
   // Route
-  Link
+  Link,
   // useParams,
   // useLocation,
   // Redirect,
@@ -39,7 +39,7 @@ export default function Navbar() {
                   <Link to='/contact'>Contact</Link>
                 </div>
                 <div>
-                  <Link to='/articles'>Articles</Link>
+                  <a href='https://blog.grobel.dev'>Articles</a>
                 </div>
                 {/* <a
                 href='https://github.com/actuharry'

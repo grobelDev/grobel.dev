@@ -1,6 +1,6 @@
 ---
 title: Setup Tailwind and PurgeCSS with PostCSS in Create-React-App in 5 Minutes
-description: Learn how to automate PurgeCSS when using Tailwind CSS to dramatically improve the performance in an example Create-React-App application.
+description: Learn how to automate PurgeCSS via PostCSS when using Tailwind CSS to dramatically improve the performance in an example Create-React-App application.
 slug: react-tailwind-purgecss-postcss
 ---
 
@@ -54,15 +54,15 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   content: ['./src/**/*.jsx', './src/**/*.js', './public/index.html'],
   css: ['./src/tailwind.css'],
   // Include any special characters you're using in this regular expression
-  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+  defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
 });
 
 module.exports = {
   plugins: [
     require('tailwindcss'),
     require('autoprefixer'),
-    ...(process.env.NODE_ENV === 'production' ? [purgecss] : [])
-  ]
+    ...(process.env.NODE_ENV === 'production' ? [purgecss] : []),
+  ],
 };
 ```
 
