@@ -39,7 +39,7 @@ export default function Navbar() {
                   <Link to='/contact'>Contact</Link>
                 </div>
                 <div>
-                  <a href='https://blog.grobel.dev'>Articles</a>
+                  <a href='https://grobel.dev'>Articles</a>
                 </div>
                 {/* <a
                 href='https://github.com/actuharry'
